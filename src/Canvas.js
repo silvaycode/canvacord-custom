@@ -612,7 +612,7 @@ class Canvacord {
         ctx.font = `bold 36px ${font}`;
         ctx.fillStyle = color;
         ctx.textAlign = 'start';
-        const name = username.length >= 10 ? username.substring(0, 7).trim() + '...' : username;
+        const name = username.length >= 13 ? username.substring(0, 10).trim() + '...' : username;
         ctx.fillText(`${name}`, 264, 164);
         ctx.font = `36px ${font}`;
         ctx.fillStyle = 'rgba(255, 255, 255, 0.4)';
