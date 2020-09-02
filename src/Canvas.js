@@ -708,11 +708,11 @@ class Canvacord {
      * @example let img = await canva.welcome({ username: "Snowflake", discrim: "0007", avatarURL: "..." });
      * canva.write(img, "img.png");
      */
-    async welcome({ username, discrim, avatarURL }) {
+    async welcome({ username, discrim, avatarURL, background }) {
         if (!username) throw new Error('No username was provided!');
         if (!discrim) throw new Error('No discrim was provided!');
         if (!avatarURL) throw new Error('No avatarURL was provided!');
-
+        if(!background) background = null;
         Canvas.registerFont(__dirname + '/assets/fonts/regular-font.ttf', {
             family: 'Manrope',
             weight: 'regular',
@@ -727,7 +727,7 @@ class Canvacord {
         const canvas = Canvas.createCanvas(700, 250);
         const ctx = canvas.getContext('2d');
 
-        const background = await Canvas.loadImage(__dirname + '/assets/images/welcomebg.png');
+        const background = await Canvas.loadImage(background ? background : __dirname + '/assets/images/welcomebg.png');
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
         const font = 'Manrope';
@@ -797,10 +797,11 @@ class Canvacord {
      * @example let img = await canva.leaver({ username: "Snowflake", discrim: "0007", avatarURL: "..." });
      * canva.write(img, "img.png");
      */
-    async leaver({ username, discrim, avatarURL, color }) {
+    async leaver({ username, discrim, avatarURL, color, background }) {
         if (!username) throw new Error('No username was provided!');
         if (!discrim) throw new Error('No discrim was provided!');
         if (!avatarURL) throw new Error('No avatarURL was provided!');
+        if(!background) background = null;
 
         Canvas.registerFont(__dirname + '/assets/fonts/regular-font.ttf', {
             family: 'Manrope',
@@ -816,7 +817,7 @@ class Canvacord {
         const canvas = Canvas.createCanvas(700, 250);
         const ctx = canvas.getContext('2d');
 
-        const background = await Canvas.loadImage(__dirname + '/assets/images/welcomebg.png');
+        const background = await Canvas.loadImage(background ? background : __dirname + '/assets/images/welcomebg.png');
         ctx.drawImage(background, 0, 0, canvas.width, canvas.height);
 
         const font = 'Manrope';
